@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('Build App') {
       steps {
         sh 'script scripts/build.sh'
       }
@@ -16,6 +16,14 @@ pipeline {
     stage('Test') {
       steps {
         sh 'script scripts/test.sh'
+      }
+    }
+
+    stage('Build a docker image') {
+      steps {
+        sh '''docker build -t yerbolattileutay/jenkins_cicd_test_image:$BUILD_NUMBER .
+
+'''
       }
     }
 
