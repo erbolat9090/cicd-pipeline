@@ -29,7 +29,7 @@ pipeline {
 
     stage('Push to the docker registry') {
       steps {
-        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin docker.io '
+        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin docker.io'
         sh 'docker push yerbolattileutay/jenkins_cicd_test_image:$BUILD_NUMBER'
       }
     }
